@@ -1,0 +1,20 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <!-- Enable INFO logging for es-processors packages -->
+    <logger name="actors" level="INFO" />
+    <logger name="config" level="INFO" />
+    <logger name="processors" level="INFO" />
+    <logger name="storage" level="INFO" />
+
+    <!-- Optional: Set Pekko logging level -->
+    <logger name="org.apache.pekko" level="INFO" />
+</configuration>
