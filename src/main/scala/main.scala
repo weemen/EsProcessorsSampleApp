@@ -2,15 +2,15 @@ import org.apache.pekko.actor.typed.{ActorRef, ActorSystem, Props, SpawnProtocol
 import org.apache.pekko.actor.typed.scaladsl.AskPattern.*
 import org.apache.pekko.util.Timeout
 import processors.BaseProcessor
-import actors.{ProcessorManagerActor, RegisterProcessor, ProcessEvent}
+import actors.{ProcessorManagerActor, RegisterProcessor, ProcessEvent, CborSerializable}
 
 import java.util.UUID
 import scala.concurrent.Await
 import scala.concurrent.duration.DurationInt
 
-final case class DomainEventA(myPropertyA: String, myPropertyB: Int) extends actors.CborSerializable
-final case class DomainEventB(myPropertyX: String, myPropertyY: Int) extends actors.CborSerializable
-final case class DomainEventC(myPropertyC: String, myPropertyD: Int) extends actors.CborSerializable
+final case class DomainEventA(myPropertyA: String, myPropertyB: Int) extends CborSerializable
+final case class DomainEventB(myPropertyX: String, myPropertyY: Int) extends CborSerializable
+final case class DomainEventC(myPropertyC: String, myPropertyD: Int) extends CborSerializable
 
 class SomeProcessorType(listOfEvents: List[Any]) extends BaseProcessor(listOfEvents):
 
